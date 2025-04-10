@@ -20,6 +20,7 @@ const upload = multer({
     }),
 }).single("file");
 
+
 export const uploadFile = async (req: any, res: any) => {
   upload(req, res, async (err: any) => {
     if (err) return res.status(500).json({ error: err.message });
@@ -40,7 +41,8 @@ export const uploadFile = async (req: any, res: any) => {
 
    try {
       // create uploaded file entry in database
-      const fileCreated=await esignService.createFile(payload);
+      const response=await esignService.createFile(payload);
+      console.log(response)
       return res.json({ message: "File uploaded successfully", fileUrl: req.file.location });
     } catch (error) {
       console.error("❌ Database save failed. Rolling back AWS upload...", error);

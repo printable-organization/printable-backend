@@ -22,6 +22,27 @@
       "when": 1743691672969,
       "tag": "0002_gifted_echo",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1744024993067,
+      "tag": "0003_neat_starhawk",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1744026417106,
+      "tag": "0004_curious_proteus",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1744027471024,
+      "tag": "0005_daily_snowbird",
+      "breakpoints": true
     }
   ]
 }
