@@ -68,21 +68,21 @@ export class EsignService {
 
   async sendSigningRequest(payload: esignRequestPayload) {
     // const id = crypto.randomUUID();
-    //check if requested user is the owner of file or not
-    // const response = await db
-    //   .select()
-    //   .from(files)
-    //   .where(
-    //     and(
-    //       inArray(files.id, payload.fileIds),
-    //       eq(files.ownerId, payload.requestedBy),
-    //     ),
-    //   );
-    // if (response.length === 0)
-    //   return {
-    //     status: 400,
-    //     message: "Not eligible to send sign request",
-    //   };
+    // check if requested user is the owner of file or not
+    const response = await db
+      .select()
+      .from(files)
+      .where(
+        and(
+          inArray(files.id, payload.fileIds),
+          eq(files.ownerId, payload.requestedBy),
+        ),
+      );
+    if (response.length === 0)
+      return {
+        status: 400,
+        message: "Not eligible to send sign request",
+      };
 
     const res = await db.transaction(async (tx) => {
       // create signRequest record in signRequest table
