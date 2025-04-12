@@ -69,20 +69,20 @@ export class EsignService {
   async sendSigningRequest(payload: esignRequestPayload) {
     // const id = crypto.randomUUID();
     //check if requested user is the owner of file or not
-    const response = await db
-      .select()
-      .from(files)
-      .where(
-        and(
-          inArray(files.id, payload.fileIds),
-          eq(files.ownerId, payload.requestedBy),
-        ),
-      );
-    if (response.length === 0)
-      return {
-        status: 400,
-        message: "Not eligible to send sign request",
-      };
+    // const response = await db
+    //   .select()
+    //   .from(files)
+    //   .where(
+    //     and(
+    //       inArray(files.id, payload.fileIds),
+    //       eq(files.ownerId, payload.requestedBy),
+    //     ),
+    //   );
+    // if (response.length === 0)
+    //   return {
+    //     status: 400,
+    //     message: "Not eligible to send sign request",
+    //   };
 
     const res = await db.transaction(async (tx) => {
       // create signRequest record in signRequest table
@@ -99,8 +99,10 @@ export class EsignService {
         fileId,
         requestId: signRequest.id,
       }));
+      console.log(fileEntries)
       // create entry within signRequestFiles of newSignRequests
-      await db.insert(signRequestedFiles).values(fileEntries);
+      await tx.insert(signRequestedFiles).values(fileEntries);
+      console.log("signRequest file inserted")
 
       // Fetch registered users in a single query
       const existingUsers = await tx
@@ -118,11 +120,16 @@ export class EsignService {
         email: email, // store email if unregistered
         status: "pending",
       }));
+     await tx.insert(signatureStatus).values(signatureEntries)
 
       console.log("email sent to singers:", payload.signers_email);
 
       // after generate link and send email
+      return userMap
     });
+    if(res) return {
+        msg:"record for signRequest is saved! you can proceed for mailing..."
+    }
     // next to proceed
     //
   }
