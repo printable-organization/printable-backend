@@ -8,7 +8,7 @@ const router = express.Router();
 //router to signRequest
 router.post("/signRequest", sendSigningRequest);
 // router when user clicks on the sign link
-router.get("/sign-document/:fileId/action/:gmail", canProceed);
+router.get("/sign-document/:fileId/:userId", canProceed);
 
 // router for submition of signature
 

@@ -1,4 +1,4 @@
-import { merchants, orders } from "../db/schema.ts";
+import { merchants} from "../db/schema.ts";
 import { db } from "../configs/db.ts";
 import { eq } from "drizzle-orm";
 

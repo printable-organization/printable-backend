@@ -4,7 +4,6 @@ import { UserPayloadType } from "../types/webhook/user.ts";
 import { users } from "../db/schema.ts";
 import { db } from "../configs/db.ts";
 import { eq } from "drizzle-orm";
-
 export class WebhookService {
   public async handleWebhook(
     req: Request<{}, {}, UserPayloadType>,
@@ -14,6 +13,7 @@ export class WebhookService {
     console.log(payload);
 
     switch (payload.type) {
+
       case "user.created": {
         try {
           const userData = payload.data;

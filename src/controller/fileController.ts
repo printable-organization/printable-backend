@@ -22,6 +22,8 @@ const upload = multer({
 
 
 export const uploadFile = async (req: any, res: any) => {
+
+  console.log("upload in progress")
   upload(req, res, async (err: any) => {
     if (err) return res.status(500).json({ error: err.message });
 
@@ -30,6 +32,7 @@ export const uploadFile = async (req: any, res: any) => {
     }
 
     const { ownerId } = req.body;
+    console.log(ownerId)
 
     const payload: FilePayload = {
       ownerId,
