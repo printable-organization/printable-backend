@@ -151,7 +151,9 @@ export class EsignService {
         from: "Acme <onboarding@resend.dev>",
         to: payload.signers_email,
         subject: "Sign Request Mail",
-        html: "<h1>it works!</h1>",
+        html: `<h1>it works! 
+link: ${payload.link}
+        </h1>`,
       };
       return await this.sendSignRequestEmail(mail_payload);
     }
