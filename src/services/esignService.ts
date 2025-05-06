@@ -175,8 +175,8 @@ link: ${payload.link}
       console.log("done sending email");
       console.log(data);
 
-      return { msg: "email sent sucessfully" };
+      return { msg: "email sent sucessfully",success:true };
     }
-    return data;
+    return {msg:"Failed sending Email, try again !!",success:false};
   }
 }

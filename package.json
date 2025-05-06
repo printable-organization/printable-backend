@@ -14,7 +14,6 @@
     "multer-s3": "^3.0.1",
     "pg": "^8.14.1",
     "pusher": "^5.2.0",
-    "react-toastify": "^11.0.5",
     "svix": "^1.61.4"
   },
   "devDependencies": {

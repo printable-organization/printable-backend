@@ -2603,8 +2603,11 @@
       "dependencies": [
         "npm:@aws-sdk/client-s3@^3.758.0",
         "npm:@clerk/types@^4.47.0",
+        "npm:@imgly/background-removal-node@^1.4.5",
+        "npm:@imgly/background-removal@^1.6.0",
         "npm:@neondatabase/serverless@~0.10.4",
         "npm:@types/express@5",
+        "npm:@xixiyahaha/rembg-node@^2.2.0",
         "npm:axios@^1.8.4",
         "npm:cors@^2.8.5",
         "npm:dotenv@^16.4.7",
@@ -2617,6 +2620,7 @@
         "npm:pg@^8.14.1",
         "npm:pusher@^5.2.0",
         "npm:react-toastify@^11.0.5",
+        "npm:sharp@~0.34.1",
         "npm:svix@^1.61.4"
       ]
     }

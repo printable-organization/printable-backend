@@ -6,10 +6,12 @@ import morgan from "morgan";
 import errorHandler from "./mainErrorHandler.ts";
 import Routes from "./src/route/index.ts";
 const app = express();
-const name = "roshan";
+
 app.use(cors());
 app.use(express.json());
+
 app.use(express.urlencoded({ extended: true }));
+
 app.use(morgan("dev"));
 
 app.use("/api", Routes);

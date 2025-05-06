@@ -14,11 +14,10 @@ export const getMerchant = async (
 ) => {
   try {
     const { id } = req.params;
-    if (!id)  res.status(400).json({ error: "Merchant ID is required" });
+    if (!id) res.status(400).json({ error: "Merchant ID is required" });
 
     const merchant = await merchantService.getMerchantWithOrder(id);
-    if (!merchant)
-       res.status(404).json({ error: "Merchant not found" });
+    if (!merchant) res.status(404).json({ error: "Merchant not found" });
 
     res.status(200).json(merchant);
   } catch (error) {
@@ -51,13 +50,11 @@ export const updateMerchant = async (
   try {
     const { id } = req.params;
     const payload = req.body;
-    if (!id)  res.status(400).json({ error: "Merchant ID is required" });
+    if (!id) res.status(400).json({ error: "Merchant ID is required" });
 
     const updatedMerchant = await merchantService.updateMerchant(id, payload);
     if (!updatedMerchant)
-       res
-        .status(404)
-        .json({ error: "Merchant not found or update failed" });
+      res.status(404).json({ error: "Merchant not found or update failed" });
 
     res.status(200).json({
       message: "Merchant updated successfully",

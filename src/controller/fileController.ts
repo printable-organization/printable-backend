@@ -50,10 +50,7 @@ export const uploadFile = async (req: any, res: any) => {
         fileUrl: req.file.location,
       });
     } catch (error) {
-      console.error(
-        "❌ Database save failed. Rolling back AWS upload...",
-        error
-      );
+      console.error("Database save failed. Rolling back AWS upload...", error);
 
       //if file create Failed in Database ( Rollback: Delete file from AWS)
       await deleteFile({ params: { filename: req.file.key } }, res);
